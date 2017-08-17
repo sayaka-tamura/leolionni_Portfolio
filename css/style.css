@@ -1,0 +1,564 @@
+@charset "UTF-8";
+@import url(http://fonts.googleapis.com/css?family=Wellfleet);
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*Typography*/
+/*fonts from article on Google font combinations*/
+/*Type scale
+used modular scale but rounded nubmers*/
+/*default line-height*/
+/*//COLORS
+//borrowed from https://kuler.adobe.com/InfoReady-Brand-Option-2-color-theme-3124965/edit/?copy=true
+$dark: #2C3E50;
+$medium: #D7DADB;
+$light: #FFFFFF;
+$highlight: #FC4349;
+$important: #6DBCDB;
+
+$text-color:#000;
+$link: $important;
+$link-visited: $medium;*/
+a {
+  text-decoration: none;
+}
+
+a:link {
+  color: #000;
+}
+
+/*not visit link color*/
+a:visited {
+  color: #000;
+}
+
+/*visited link */
+a:hover {
+  color: #000;
+}
+
+/*on cursol color*/
+html, body {
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  font-size: 100%;
+  font-family: Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+header {
+  margin-bottom: 2em;
+}
+
+h1 {
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 1.3;
+}
+
+h2 {
+  font-family: 'Wellfleet', cursive;
+  font-weight: 500;
+  font-size: 1.5em;
+  line-height: 1.5;
+}
+
+h3 {
+  font-family: 'Wellfleet', cursive;
+  font-size: 1.313em;
+  line-height: 1.3;
+}
+
+h4 {
+  font-family: 'Wellfleet', cursive;
+  font-size: 1em;
+  line-height: 1.3;
+}
+
+p {
+  font-size: 0.875em;
+  line-height: 1.3;
+}
+
+footer {
+  /* padding: 0 1em 1em 1em; */
+}
+
+b {
+  font-family: verdana,arial,helvetica,sans-serif;
+  font-weight: 700;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  color: #000000;
+}
+
+.mgb_05rem {
+  margin-bottom: 0.5rem;
+}
+
+.mgb_1rem {
+  margin-bottom: 1rem;
+}
+
+/* ============================
+* NAVIGATION
+* Modified from: http://webdesign.tutsplus.com/tutorials/htmlcss-tutorials/a-simple-responsive-mobile-first-navigation/
+* =============================*/
+#main_nav {
+  clear: both;
+  overflow: hidden;
+}
+
+#main_nav ul {
+  list-style: none;
+}
+
+#main_nav li {
+  float: left;
+}
+
+#main_nav li a {
+  display: block;
+  color: #fff;
+  background-color: #555;
+  text-transform: uppercase;
+  padding: 0.625em 1em;
+  /* 10/16   16/16*/
+  text-decoration: none;
+  font-weight: 900;
+}
+
+#main_nav li a:hover {
+  color: #555;
+  background-color: #eee;
+}
+
+#main_nav li a:active {
+  color: #ddd;
+  background-color: #555;
+}
+
+#main_nav label {
+  color: #fff;
+  float: left;
+}
+
+#main_nav li .current {
+  color: #555;
+  background-color: #fff;
+}
+
+img, video {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+}
+
+/*for IE*/
+img {
+  -ms-interpolation-mode: bicubic;
+}
+
+/*CLEARFIX*/
+/*http://blog.teamtreehouse.com/a-better-clearfix-with-sass*/
+footer:after, .content_wrapper:after, .content_wrapper #header:after, .content_wrapper .content:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* apply a natural box layout model to all elements */
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -icab-box-sizing: border-box;
+  -khtml-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/*This is from Chris Coyier and is a way to name your media queries*/
+/*we are sizing in ems by using math to write in numbers. for a 420px breakpoint we need to divide by 16 then multiply by 1 em to convert*/
+/*notice that px is not used for other number so*/
+/*420/16 * 1em would give you 420px in ems*/
+/*GRID HELPERS*/
+/*In my demos in class we are using padding inside of a column to create gutters. We use the same padding on the left and right side to make the gutter/
+
+you can do something differently like just use right padding but then either
+
+change the $gutter variable and $cols mixin appropriately or
+set your widths by hand for each section.*/
+/* 10/16 +rem*/
+/*You pass in how many columns and the total columns and it sets the width in percent
+and it sets the gutter*/
+/*@mixin cols($num, $tot){
+	width:$num/$tot * 100%;
+	padding:0 $gutter;
+}
+*/
+/*Groval layout*/
+.content_wrapper {
+  /* end #header */
+}
+
+.content_wrapper #header #header_logo {
+  margin-top: 3%;
+  margin-left: 3%;
+  width: 18.5%;
+  height: 5.5%;
+  float: left;
+  position: relative;
+  z-index: 3;
+}
+
+.content_wrapper #header #navi {
+  width: 34%;
+  height: 8%;
+  font-size: 1.2rem;
+  position: fixed;
+  top: 6%;
+  right: 4%;
+}
+
+.content_wrapper #header #navi ul li {
+  display: block;
+  margin: 0;
+  padding: 0;
+  float: right;
+  padding: 0% 9% 0% 9%;
+  border-right: 1px solid #000000;
+}
+
+.content_wrapper #header .unchosen a {
+  text-decoration: none;
+  list-style-type: none;
+  color: #000000;
+}
+
+.content_wrapper #header .unchosen a:hover {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.content_wrapper #header .chosen a {
+  text-decoration: none;
+  list-style-type: none;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.content_wrapper .content {
+  width: 60%;
+  float: left;
+  margin: 2rem;
+  padding: 0.5rem;
+}
+
+/* end .content_wrapper */
+/*Groval layout End*/
+/* top_leolionni page start */
+#top_flashContent {
+  margin-top: 15%;
+  padding: 0;
+}
+
+/* top_leolionni page End */
+/* index page Start */
+#sidetree_first, #sidetree_second {
+  float: left;
+  margin-top: 19.4%;
+}
+
+#home_flashContent {
+  float: left;
+  margin-top: 5%;
+}
+
+#sideFlog {
+  float: left;
+  margin-top: 17.5%;
+}
+
+#sidetree_third {
+  float: right;
+  margin-top: 19.4%;
+}
+
+/* index page End */
+/* Index page start */
+#main img {
+  width: 100%;
+  height: 100%;
+}
+
+/* Index page end  */
+/* About Page start */
+#Leo_face {
+  margin: 0.5rem 2.5rem 0 3rem;
+  float: left;
+}
+
+#main_text {
+  margin: 0;
+  width: 62%;
+  text-align: justify;
+  float: left;
+}
+
+#main_text div {
+  margin-bottom: 1rem;
+}
+
+#main_text .quote {
+  font-style: italic;
+}
+
+#main_text .dash_hr_topAndbottom {
+  border-top: black 1px dashed;
+  padding: 1rem 0;
+  border-bottom: black 1px dashed;
+}
+
+#main_text h4 {
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+#Designed {
+  width: 20%;
+  height: 5%;
+  font-size: 12px;
+  float: left;
+  clear: both;
+  margin-left: 3rem;
+  margin-bottom: 2rem;
+}
+
+/* About Page End */
+/* Books page start */
+.artworks_bookimage {
+  width: 180px;
+  height: 200px;
+  margin: 0.5rem 0.5rem 1.5rem 0.5rem;
+  background-color: violet;
+  float: left;
+  border-width: thin;
+  border-style: solid;
+}
+
+#flashContent {
+  width: 35%;
+  float: right;
+  position: fixed;
+  top: 19%;
+  left: 65%;
+}
+
+/* Books page End */
+/* books_description page start */
+.description {
+  margin: 2rem;
+}
+
+.books_summary {
+  width: 57%;
+  float: left;
+  margin: 2rem 1rem 1rem 1rem;
+}
+
+.productDetail {
+  background-color: #fff;
+}
+
+.productDetail ul {
+  margin: 1rem 0 0 1rem;
+  font-size: 0.8rem;
+}
+
+/* books_description page End */
+.mouseoverEffect {
+  overflow: hidden;
+  position: relative;
+  /* 相対位置指定 */
+}
+
+.mouseoverEffect .caption {
+  font-size: 130%;
+  font-family: 'Wellfleet', cursive;
+  text-align: center;
+  padding: 1.5rem 2rem;
+  color: #fff;
+}
+
+.mouseoverEffect .mask {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  /* 絶対位置指定 */
+  top: 0;
+  left: 0;
+  opacity: 0;
+  /* マスクを表示しない */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* マスクは半透明 */
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.mouseoverEffect:hover .mask {
+  opacity: 1;
+  /* マスクを表示する */
+}
+
+/* Tilt Effect start */
+.tilt {
+  transition: all 0.5s ease;
+}
+
+.tilt:hover {
+  transform: rotate(-10deg);
+}
+
+/* decorated ruled line effect start */
+.multi {
+  padding: 6px 0;
+  border-bottom: 8px solid #ABDEF7;
+  position: relative;
+}
+
+.multi:before, h2.multi:after {
+  content: "";
+  display: block;
+  height: 8px;
+  position: absolute;
+  bottom: -8px;
+}
+
+.multi:before {
+  width: 20%;
+  left: 8%;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.multi:after {
+  width: 30%;
+  left: 12%;
+  background: rgba(87, 176, 224, 0.6);
+}
+
+.books_summary {
+  color: #000;
+  background: #fff;
+  padding: 20px;
+  border: 2px dashed rgba(155, 75, 10, 0.5);
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  box-shadow: 0 0 0 5px #fff, 0 2px 3px 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 0 0 5px #fff, 0 2px 3px 5px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 0 5px #fff, 0 2px 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+.socialfloat {
+  display: block;
+  float: left;
+  margin-top: 2rem;
+  margin-left: 0.5rem;
+}
+
+.socialfloat .fbtn {
+  width: 50px;
+  height: 50px;
+  display: block;
+  color: #fff;
+  text-align: center;
+}
+
+.socialfloat .fbtn i {
+  font-size: 30px;
+  line-height: 50px;
+}
+
+.facebook {
+  background-color: #3b5998;
+}
+
+.gplus {
+  background-color: #dd4b39;
+}
+
+.twitter {
+  background-color: #55acee;
+}
+
+.stumbleupon {
+  background-color: #eb4924;
+}
+
+.pinterest {
+  background-color: #cc2127;
+}
+
+.linkedin {
+  background-color: #0077b5;
+}
+
+.buffer {
+  background-color: #323b43;
+}
+
+/*# sourceMappingURL=style.css.map */

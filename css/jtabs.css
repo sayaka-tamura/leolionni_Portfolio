@@ -1,0 +1,70 @@
+.description_tab_wrapper { 
+	margin:2rem 0.5rem 0.5rem 0.5rem;
+    float: left;
+	clear: both;
+}
+
+.clear {clear:both;}
+
+ul.tabs {
+	list-style:none; width:500px;
+}
+
+ul.tabs li:first-child {
+	border-left:1px solid #ccc;
+}
+
+ul.tabs li {
+	float:left; 
+	border-right:1px solid #ccc;
+	border-top:1px solid #ccc; 
+	background-color:#eee;
+}
+
+ul.tabs li.active {
+	border-bottom:1px solid #fff; 
+	background-color:#fff; 
+	margin-bottom:-1px;
+}
+
+ul.tabs li a {
+	display:block; 
+	padding:5px 10px; 
+	color:#777; 
+	letter-spacing:-1px; 
+	outline:none; 
+	text-decoration:none; 
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+ul.tabs li.active a {
+	font-weight:600; 
+	color:#000;
+}
+
+div.tabs_content {
+	width:500px; 
+	border:1px solid #ccc;
+}
+
+div.tabs_content > div {
+	padding:20px; 
+    font-size: 0.8rem;
+    font-family: Futura, "Trebuchet MS", Arial, sans-serif;
+	/* display:none; */
+} 
+/* suggested to use display:none so that if the html is very long it wont jump badly */
+
+div.tabs_content > div.praise > div:first-of-type {
+	margin-bottom: 1rem;
+}
+            
+div.tabs_content > div.praise span {
+	font-style: italic;
+}
+
+div.tabs_content > div.awards span
+{
+    float: right;
+    display: inline-block;
+}

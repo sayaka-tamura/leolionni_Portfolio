@@ -1,0 +1,251 @@
+/* apply a natural box layout model to all elements */
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -icab-box-sizing: border-box;
+  -khtml-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/*This is from Chris Coyier and is a way to name your media queries*/
+/*we are sizing in ems by using math to write in numbers. for a 420px breakpoint we need to divide by 16 then multiply by 1 em to convert*/
+/*notice that px is not used for other number so*/
+/*420/16 * 1em would give you 420px in ems*/
+
+@mixin breakpoint($point) {
+  @if $point == smallest {
+    @media (max-width: 360/16 * 1em) { @content; }
+  }
+  @else if $point == small {
+    @media (min-width: 360/16 * 1em) { @content; }
+  }
+  @else if $point == medium {
+    @media (min-width: 480/ 16 * 1em) { @content; }
+  }
+  @else if $point == large {
+    @media (min-width: 800/16 * 1em) { @content; }
+  }
+  @else if $point == largest {
+    @media (min-width: 1024/16 * 1em)  { @content; }
+  }
+  @else if $point == min-max {
+    @media (min-width: 1280/16 * 1em) and (max-width: 2000/16*1em)  { @content; }
+  }
+}
+
+/*GRID HELPERS*/
+
+/*In my demos in class we are using padding inside of a column to create gutters. We use the same padding on the left and right side to make the gutter/
+
+you can do something differently like just use right padding but then either
+
+change the $gutter variable and $cols mixin appropriately or
+set your widths by hand for each section.*/
+
+$gutter: 10/16 * 1rem; /* 10/16 +rem*/
+
+/*You pass in how many columns and the total columns and it sets the width in percent
+and it sets the gutter*/
+
+/*@mixin cols($num, $tot){
+	width:$num/$tot * 100%;
+	padding:0 $gutter;
+}
+*/
+
+/*Groval layout*/
+
+.content_wrapper{
+	@extend %clearfix;
+
+	#header{
+		@extend %clearfix;
+
+		#header_logo{
+			margin-top: 3%;
+			margin-left: 3%;
+			width: 18.5%;
+			height: 5.5%;
+			float: left;
+			position: relative;
+			z-index: 3;
+		}
+
+		#navi{
+			width: 34%;
+			height: 8%;
+			font-size: 1.2rem;
+			position: fixed;
+    		top: 6%;
+    		right: 4%;
+		}
+
+		#navi ul li{
+			display: block;
+			margin: 0;
+			padding: 0;
+			float: right;
+			padding: 0% 9% 0% 9%;
+			border-right: 1px solid #000000;
+		}
+
+		.unchosen a{
+			text-decoration: none;
+			list-style-type: none;
+			color: #000000;
+		}
+
+		.unchosen a:hover{
+			color: rgba(0, 0, 0, 0.4);
+		}
+
+		.chosen a{
+			text-decoration: none;
+			list-style-type: none;
+			color: rgba(0, 0, 0, 0.4);
+		}
+	} /* end #header */
+
+	.content{
+		@extend %clearfix;
+	    width: 60%;
+	    float: left;
+	    margin: 2rem;
+	    padding: 0.5rem;
+	}
+
+}/* end .content_wrapper */
+/*Groval layout End*/
+
+/* top_leolionni page start */
+
+#top_flashContent{
+    margin-top: 15%;
+	padding: 0;
+}
+
+/* top_leolionni page End */
+
+/* index page Start */
+#sidetree_first,#sidetree_second{
+	float: left;
+    margin-top: 19.4%;
+}
+
+#home_flashContent{
+    float: left;
+    margin-top: 5%;
+}
+
+#sideFlog{
+	float: left;
+    margin-top: 17.5%;
+}
+
+#sidetree_third{
+	float: right;
+    margin-top: 19.4%;
+}
+
+/* index page End */
+
+/* Index page start */
+#main{
+	img{
+		width: 100%;
+		height: 100%;
+	}
+}
+/* Index page end  */
+
+/* About Page start */
+
+#Leo_face{
+    margin: 0.5rem 2.5rem 0 3rem;
+    float: left;	
+}
+
+#main_text{
+	margin: 0;
+    width: 62%;
+    text-align: justify;
+    float: left;
+
+    div{
+    	margin-bottom: 1rem;
+    }
+
+    .quote{
+    	font-style: italic;
+    }
+
+    .dash_hr_topAndbottom{
+	    border-top: black 1px dashed;
+	    padding: 1rem 0;
+	    border-bottom: black 1px dashed;
+    }
+
+    h4{
+	    font-weight: 400;
+	    margin-bottom: 1rem;
+    }
+}
+
+
+#Designed{
+    width: 20%;
+    height: 5%;
+    font-size: 12px;
+    float: left;
+    clear: both;
+    margin-left: 3rem;
+    margin-bottom: 2rem;
+}
+/* About Page End */
+
+/* Books page start */
+.artworks_bookimage{
+    width: 180px;
+    height: 200px;
+    margin: 0.5rem 0.5rem 1.5rem 0.5rem;
+    background-color: violet;
+    float: left;
+    border-width: thin;
+    border-style: solid;
+}
+
+#flashContent {
+	width:35%; 
+	float: right;
+    position: fixed;
+    top: 19%;
+    left: 65%;
+}
+
+/* Books page End */
+
+/* books_description page start */
+
+.description{
+    margin: 2rem;
+}
+
+.books_summary{
+	width: 57%;
+    float: left;
+    margin: 2rem 1rem 1rem 1rem;
+}
+
+.productDetail{
+	background-color: #fff;
+
+    ul{
+    	margin: 1rem 0 0 1rem;
+    	font-size: 0.8rem;
+    }
+}
+
+/* books_description page End */
+
