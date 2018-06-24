@@ -1,6 +1,6 @@
 ## leolionni_Portfolio
 
-[(Link) Your Whole Life](http://mmp.bmcc.cuny.edu/sayaka.tamura/MMP100/MMP_Final/top_leolionni.html)
+[(Link) Leolionni's portfolio](http://mmp.bmcc.cuny.edu/sayaka.tamura/MMP100/MMP_Final/top_leolionni.html)
 
 ### Summery:  
 Website for Leolionni's portfolio (not active)
